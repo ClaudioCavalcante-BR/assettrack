@@ -275,4 +275,4 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 ## 15. Autor
 
 Claudio Cavalcante de Almeida
-repositorio github: https://github.com/ClaudioCavalcante-BR/assettruck.git
+repositorio github: https://github.com/ClaudioCavalcante-BR/assettrack.git
