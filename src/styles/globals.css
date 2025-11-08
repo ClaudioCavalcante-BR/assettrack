@@ -1,0 +1,458 @@
+:root{
+  --bg-overlay: rgba(4,9,20,.55);
+  --panel: rgba(17,25,40,.65);
+  --text: #e5e7eb;
+  --muted:#9ca3af;
+  --border: rgba(255,255,255,.08);
+  --accent:#dbe1e9;
+}
+
+*{ box-sizing: border-box; }
+html, body, #root{ 
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system;
+  /* 🔹 imagem de fundo responsiva */
+  background: url("/transporte.jpg") center center / cover no-repeat fixed;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 🔹 camada translúcida sobre a imagem */
+.app__wrap {
+  flex: 1;
+  backdrop-filter: saturate(120%) blur(6px);
+  background: rgba(0, 0, 0, 0.45); /* leve escurecimento */
+  min-height: 100vh;
+  transition: background 0.3s ease;
+}
+.layout{
+  display:grid; 
+  grid-template-columns:260px 1fr; 
+  gap:24px; 
+  padding:24px; 
+  min-height:100vh;
+ /* position: relative; /* importante: serve de referência pro footer */
+}
+.panel{
+  background: var(--panel); 
+  border: 1px solid var(--border); 
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.sidebar{ 
+  padding:16px; 
+}
+.header{ 
+  padding:12px 16px; 
+}
+.content{ 
+  padding:20px; 
+}
+
+.header-inner{ 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+}
+.muted{ 
+  opacity:.7; 
+}
+
+.nav-btn{
+  display:block; 
+  width:100%; 
+  text-align:left; 
+  padding:10px 12px;
+  margin:8px 0;
+  border-radius:10px; 
+  border:1px solid transparent;
+  background:transparent; 
+  color:inherit; 
+  cursor:pointer;
+}
+.active, .nav-btn:hover{ 
+  border-color: var(--accent); 
+}
+
+.kpi{ 
+  font-size: 28px; 
+  margin-top: 8px; 
+}
+
+.grid2{ 
+  display:grid; 
+  grid-template-columns: 2fr 1fr; 
+  gap:12px; 
+}
+.table{ 
+  width:100%; 
+  border-collapse: collapse; 
+}
+
+.table th, 
+
+.table td{ 
+  text-align:left; 
+  padding:10px; 
+}
+.table thead{ 
+  opacity:.85; 
+}
+.actions{ 
+  display:flex; 
+  gap:8px; 
+}
+/* Botão padrão (Editar) */
+button.panel { 
+  padding: 6px 12px; 
+  border-radius: 10px; 
+  border: 1px solid #3b82f6;         /* azul moderno */
+  background: rgba(59,130,246,0.1);  /* leve fundo azulado */
+  color: #bfdbfe;                    /* texto azul claro */
+  cursor: pointer; 
+  transition: all 0.2s ease;
+}
+button.panel:hover {
+  background: rgba(59,130,246,0.25);
+  box-shadow: 0 0 8px rgba(59,130,246,0.25);
+  transform: scale(1.03);
+}
+
+/* Botão Excluir */
+button.panel.danger { 
+  border-color: #f87171; 
+  background: rgba(248,113,113,0.1);
+  color: #fca5a5;
+}
+button.panel.danger:hover {
+  background: rgba(248,113,113,0.25);
+  box-shadow: 0 0 8px rgba(248,113,113,0.25);
+  transform: scale(1.03);
+}
+
+/* 🟢 Ativo */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #22c55e;          /* verde principal */
+  background: rgba(34,197,94,0.1);
+  color: #bbf7d0;                     /* texto verde claro */
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.status:hover {
+  background: rgba(34,197,94,0.25);
+  box-shadow: 0 0 8px rgba(34,197,94,0.25);
+  transform: scale(1.03);
+}
+
+/* Versões para manutenção e baixado */
+.status.maintenance {
+  border-color: #facc15;
+  background: rgba(250,204,21,0.1);
+  color: #fef08a;
+}
+.status.disposed {
+  border-color: #f87171;
+  background: rgba(248,113,113,0.1);
+  color: #fecaca;
+}
+
+
+input, select{
+  padding:10px 12px; 
+  border-radius:10px; 
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.25); 
+  color: inherit;
+}
+.errors{ 
+  margin-top:8px; 
+  color: salmon; 
+  display:grid; 
+  gap:4px; 
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 200px 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+  .sidebar {
+    display: none; /* esconde a barra lateral em telas pequenas */
+  }
+  .main-col {
+    padding-bottom: 70px;
+  }
+  .footer {
+    /*width: 100%;*/
+    border-radius: 12px;
+    /*left: 0;
+    right: 0;*/
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    border-radius: 8px;
+    padding: 12px;
+  }
+  h2, h3 {
+    font-size: 1.1rem;
+  }
+  input, select, button {
+    font-size: 0.9rem;
+  }
+}/* coluna da direita vira grid com 3 linhas (header, conteúdo, footer) */
+.main-col{
+  display: grid;
+  grid-template-rows: auto 1fr auto; 
+  min-height: 100%;
+}
+
+/* Footer “leve” com linha no topo e texto sutil */
+.footer{
+  border-top: 1px solid var(--border);   
+  text-align: center;                    
+  padding: 14px 16px;                     
+  color: var(--muted);                    
+  font-size: 0.95rem;                     
+  background: rgba(17, 25, 40, 0.85); 
+  backdrop-filter: blur(6px);
+  position: fixed;
+  bottom: 25px;
+  z-index: 20;
+  border-radius: 12px; /* border-radius: 0 0 16px 16px;*/
+  /*overflow: hidden;  /* evita “vazar” fundo nos cantos */
+  /*box-shadow: 0 -3px 20px rgba(0,0,0,0.35);
+  width: calc(100% - 24px); /* respeita o padding lateral da grade */
+  /*margin-left: auto; /* empurra pra direita */
+  /*margin-top: 24px; /* pequeno respiro do conteúdo */
+  box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.35);
+  left: 284px;
+  right: 24px; 
+
+}
+
+/* Responsivo (opcional): reduz padding e fonte em telas menores */
+@media (max-width: 768px){
+  .footer { 
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 10px;
+  }
+}
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Botão */
+.toggle-btn{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  color: rgb(222, 219, 214); /* var(--text)*/
+  cursor:pointer;
+  font-size:.9rem;
+  transition:all .2s ease;
+}
+.toggle-btn:hover { 
+  background:rgba(255,255,255,.1); 
+  transform:scale(1.02); 
+}
+
+/* Modo "nítido": remove o blur/overlay do app */
+body.no-blur .app__wrap{
+  backdrop-filter:none !important;
+  background:rgba(0,0,0,.2) !important;
+}
+/* === Barra de busca moderna === */
+.search-bar{
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,.25);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  transition: all .2s ease;
+}
+.search-bar:focus-within{
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(219,225,233,.25);
+}
+
+.search-bar input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: .95rem;
+  padding: 6px 8px 6px 28px; /* espaço para o ícone */
+}
+
+.search-icon{
+  position: absolute;
+  left: 10px;
+  opacity: .85;
+  pointer-events: none;
+}
+
+.clear-btn{
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: color .2s ease, transform .15s ease;
+}
+.clear-btn:hover { 
+  color: var(--accent); 
+  transform: scale(1.05);
+}
+
+/* Botão ViaCEP */
+button.panel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer a:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* painel com rolagem (aplicada na div que envolve a tabela) */
+.table-scroll {
+  max-height: 52vh;         
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 12px;
+  scroll-behavior: smooth;
+}
+
+/* cabeçalho fixo ao rolar */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2; 
+  background: rgba(17, 25, 40, 0.9); 
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* linhas com “zebra” e realce no hover */
+.table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* linhas bem separadas visualmente */
+.table th, .table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* rolagem mais elegante (WebKit) */
+.table-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.12);
+  border-radius: 8px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Evita o “estouro” de largura do track da direita do grid */
+.layout > .main { min-width: 0; }
+
+/* O painel de conteúdo também precisa permitir encolher */
+.panel.content { 
+  overflow: hidden;  
+  min-width: 0;
+}
+
+/* Caixa própria da DataGrid: rolagem */
+.datagrid-box {
+  width: 100%;
+  max-width: 100%;
+  height: 52vh;     
+  overflow: auto;   
+  box-sizing: border-box;
+}
+
+/* Garante que a DataGrid respeite a largura da caixa */
+.datagrid-box .MuiDataGrid-root {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Botão "pill" similar aos outros, para a coluna Status */
+button.panel.pill{
+  border-radius: 999px;
+  padding: 4px 10px;
+  line-height: 1;
+}
+
+/* Cores dos estados */
+button.panel.success{            /* Ativo */
+  border-color:#22c55e;
+  background:rgba(34,197,94,.12);
+  color:#bbf7d0;
+}
+button.panel.warn{               /* Manutenção */
+  border-color:#facc15;
+  background:rgba(250,204,21,.12);
+  color:#fef08a;
+}
+
+/* Área do botão do formulário */
+.form-actions{
+  display: flex;
+  justify-content: flex-end;   
+  margin-top: 20px;
+}
+
+/* Botão "Adicionar" menor */
+.btn-add{
+  width: 320px;
+  padding: 6px 20px;          
+  line-height: 1;
+  border-radius: 10px;
+}

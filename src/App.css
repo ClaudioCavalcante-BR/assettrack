@@ -1,0 +1,60 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+/* 1) Em telas pequenas, reduza padding e fonte das seções */
+@media (max-width: 768px) {
+  .panel { padding: 12px; }
+  .panel h1, .panel h2 { font-size: 1.1rem; }
+  .form-row { display: block; }          
+  .form-row > * { width: 100%; margin-bottom: 8px; }
+}
+
+/* 2) Sidebar mais estreita no mobile */
+@media (max-width: 768px) {
+  .sidebar { width: 220px; }
+}
+
+/* 3) DataGrid: garante largura mínima e scroll horizontal quando necessário */
+.datagrid-wrap {
+  overflow: auto;          /* só a grade rola horizontalmente */
+  min-width: 0;
+}
