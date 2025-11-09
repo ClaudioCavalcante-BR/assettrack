@@ -164,7 +164,7 @@ Instalação rápida (macOS)
    `brew install --cask visual-studio-code`
 
 Clonar e rodar
-1. `git clone https://github.com/SEU_USUARIO/assettrack.git`
+1. `git clone https://github.com/ClaudioCavalcante-BR/assettrack.git
 2. `cd assettrack`
 3. `npm install`
 4. `npm run dev`  
@@ -174,10 +174,6 @@ Build de produção
 1. `npm run build`
 2. `npm run preview`  
    Acesse http://localhost:4173
-
-Observações
-- Porta ocupada: `export PORT=5174 && npm run dev`
-- Cache corrompido: `rm -rf node_modules package-lock.json && npm install`
 
 ---
 
@@ -193,7 +189,7 @@ Observações
 ## 8. Configurações e variáveis
 
 - ViaCEP: consumo direto da API pública.
-- IBGE Localidades: preparado para UF/Município.
+- IBGE Localidades: preparado para consultar UF/Município.
 - Quando houver back-end: configurar `.env`.
 
 `.env.example`
@@ -234,7 +230,7 @@ VITE_API_BASE_URL=http://localhost:8080
 
 ## 11. Compatibilidade entre navegadores
 
-- Chrome, Firefox, Safari e Edge.  
+- Chrome, Firefox e Safari.  
 - Evidências em `docs/compat/`.
 
 ---
