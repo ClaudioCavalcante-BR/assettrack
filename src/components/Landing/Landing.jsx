@@ -12,12 +12,12 @@ export default function Landing({ onEnter }) {
     <div className={styles.wrap} style={{ backgroundImage: `url(/landing.jpg)` }}>
       <div className={styles.overlay} />
       <div className={styles.card}>
-        <h1>AssetTruck</h1>
+        <h1>AssetTrack</h1>
         <p className={styles.subtitle}>Painel de entrada</p>
 
         <div className={styles.text}>
           <p>
-            O <strong>AssetTruck</strong> é um projeto focado em
+            O <strong>AssetTrack</strong> é um projeto focado em
             <em> cadastro, organização e rastreabilidade de ativos</em> no contexto
             logístico e operacional. Nosso objetivo é oferecer uma experiência
             simples, clara e eficiente para o time acompanhar o ciclo de vida dos ativos,
